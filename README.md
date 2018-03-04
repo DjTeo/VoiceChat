@@ -30,7 +30,7 @@ public void start(){
   // Create a voice chat client, that can send audio data to the server.
   // We need to pass the Kryo object of our client.
   Kryo kryo = client.getKryo();
-  VoceChatClient voiceClient = new VoiceChatClient(kryo);
+  VoiceChatClient voiceClient = new VoiceChatClient(kryo);
   
   // Finally, allow the client to play audio recieved from the server.
   voiceClient.addReceiver(client);
@@ -77,7 +77,7 @@ public void start(){
    server.addListener(new Listener(){
    	public void received(Connection connection, Object object) {
       // This 'bounces' back any audio data sent from clients.
-		  relay.relayVoice(connection, object, server);
+		  VoiceChatServer.relayVoice(connection, object, server);
     }
    });
    
